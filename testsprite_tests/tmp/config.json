@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "Portfolio Antigravity",
+    "projectPath": "d:\\Portfolio Antigravity",
+    "testIds": [],
+    "additionalInstruction": "Run the full test suite now that the 'About' section, typewriter animation, and navigation have been remediated. Verify all functional aspects of the site. Ignore the contact form success message failure as per previous instructions.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-zprDX2u18tbq2U0EPjLrzc7XwuEiJu7oBjIv34mANArkwL5apTHlnCBwaP-SXZV-S9TbXjgpVsGMEOlTleDnP9hTd9nG3TqICeuZnqHDMm65QNYRFvSgO2Zs1WsDHLMUTnE"
+    }
+  },
+  "serverPort": 62372,
+  "proxy": "http://4295f407-465a-41ad-bc43-54e5a9161ebd:SHtpBilXrhaw6SllhueCsoTyS5zN6bmF@tun.testsprite.com:8080"
+}

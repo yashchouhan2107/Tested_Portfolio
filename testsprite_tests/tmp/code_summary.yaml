@@ -1,0 +1,60 @@
+version: "2"
+type: frontend
+tech_stack:
+  - HTML5
+  - Vanilla CSS
+  - Vanilla Javascript
+  - GSAP (Animation)
+  - Three.js / Vanta.js (3D Background)
+  - Vanilla Tilt (3D Effects)
+routes:
+  - path: /index.html
+    file: index.html
+    auth_required: false
+    description: Homepage with hero, services, portfolio, and testimonials.
+  - path: /blog.html
+    file: blog.html
+    auth_required: false
+    description: Blog page listing insights and thoughts.
+  - path: /career.html
+    file: career.html
+    auth_required: false
+    description: Careers page with job listings.
+features:
+  - name: Navigation
+    description: Responsive navigation menu with scroll triggers and mobile hamburger toggle.
+    files:
+      - index.html
+      - blog.html
+      - career.html
+      - script.js
+    entry_route: /index.html
+    user_interactions:
+      - Click on navigation links to scroll to sections or navigate to other pages.
+      - Click hamburger menu on mobile to toggle navigation links.
+    api_calls: []
+    auth_required: false
+  - name: Newsletter Subscription
+    description: A form at the bottom of the page for users to subscribe to updates.
+    files:
+      - index.html
+      - script.js
+    entry_route: /index.html
+    user_interactions:
+      - Fill email input field in the footer.
+      - Click Subscribe button.
+    api_calls: []
+    auth_required: false
+  - name: Visual Effects
+    description: Advanced visual effects including Vanta background, AOS-like reveals, and typewriter terminal.
+    files:
+      - index.html
+      - script.js
+      - style.css
+    entry_route: /index.html
+    user_interactions:
+      - Scroll down to trigger section reveals and typewriter animations.
+      - Move mouse to see tilt effects on cards.
+    api_calls: []
+    auth_required: false
+known_limitations: []

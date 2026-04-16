@@ -1,0 +1,1018 @@
+[
+  {
+    "id": "TC001",
+    "title": "Homepage loads with hero and active visual effects",
+    "description": "Verifies the homepage loads and the hero section displays with its background and typewriter-style effect present.",
+    "category": "Visual Effects and Animations",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the page to finish rendering above-the-fold content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero section is displayed with an animated typewriter-style text effect and an active background visual effect"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Jump to key homepage sections from primary navigation",
+    "description": "Verifies a visitor can use homepage navigation to scroll to Hero, About, Projects, and Contact sections successfully.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the hero section"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the about section"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Homepage remains usable when switching from desktop to mobile viewport",
+    "description": "Verifies that the homepage layout reflows and the primary navigation collapses for a narrow viewport while content remains accessible and readable.",
+    "category": "Responsive Layout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a desktop size"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the page from top to bottom"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a narrow mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the page from top to bottom"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navigation is collapsed into a mobile-friendly control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify key sections of the homepage are still visible and usable without overlapping or clipped content"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Hero renders with typewriter animation visible",
+    "description": "Verifies the homepage hero loads and shows the typewriter/terminal-style animation as part of the introduction.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the hero section to finish initial rendering"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero headline and typewriter-style animated text are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Use mobile hamburger navigation to access homepage sections",
+    "description": "Verifies a mobile visitor can open the hamburger navigation and use it to jump to a homepage section.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrow mobile width"
+      },
+      {
+        "type": "action",
+        "description": "Click the mobile navigation toggle to open the menu"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the projects section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Mobile hamburger navigation opens and closes without breaking layout",
+    "description": "Verifies that on a narrow viewport the hamburger navigation can be opened and closed and the page remains usable.",
+    "category": "Responsive Layout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a narrow mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Click the control that opens the mobile navigation menu"
+      },
+      {
+        "type": "action",
+        "description": "Click the control that closes the mobile navigation menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is no longer visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the main page content remains visible and usable after closing the menu"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Submit contact form successfully",
+    "description": "Verifies that a visitor can submit the contact form with valid required fields and sees a success confirmation.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Test Visitor"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with test.visitor@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with This is a test inquiry from automated UI testing."
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Browse projects section from homepage",
+    "description": "Verifies that a visitor can reach the Projects section from the homepage and view project cards without layout issues.",
+    "category": "Projects Showcase",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Scroll within the projects section to view multiple project cards"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify project cards are displayed with a title and summary visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Project/service cards support tilt interaction without breaking layout",
+    "description": "Verifies that moving the pointer over interactive cards produces a tilt effect while the card remains usable and the page layout stays intact.",
+    "category": "Visual Effects and Animations",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the projects or services card grid"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer across an interactive card"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer off the card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hovered card shows a 3D/tilt interaction and the surrounding grid remains properly laid out"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Contact form required-field validation",
+    "description": "Verifies that submitting the contact form with a required field missing shows an inline validation error and does not submit.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Test Visitor"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with test.visitor@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Leave the message field blank"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an inline validation error is visible for a required field"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Reach Projects from Hero using navigation",
+    "description": "Verifies a visitor can start at the hero and use navigation to reach the projects section successfully.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the projects section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Subscribe to newsletter successfully",
+    "description": "Verifies that a visitor can subscribe from the footer newsletter form with a valid email and sees a confirmation.",
+    "category": "Newsletter Subscription",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Fill valid.email@example.com into the newsletter email field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the newsletter subscription"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a subscription confirmation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Visual effects do not obstruct contact interactions",
+    "description": "Verifies that animated/background effects do not block normal interaction with the contact area on the homepage.",
+    "category": "Visual Effects and Animations",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Click into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Sample Visitor into the name field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form remains interactable and text entry works normally"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Newsletter email format validation",
+    "description": "Verifies that entering an invalid email in the newsletter form shows an inline validation error and does not submit.",
+    "category": "Newsletter Subscription",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Fill invalid-email into the newsletter email field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the newsletter subscription"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an inline validation error is visible for the email field"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Navigate from homepage to Blog and back",
+    "description": "Verifies a visitor can open the Blog page from the site navigation and return to the homepage successfully.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to open the blog page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to return to the homepage"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the homepage hero section is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Recruiter navigates from careers to homepage contact section",
+    "description": "Verifies a recruiter can navigate from the careers page back to the homepage and reach the contact section to begin an inquiry.",
+    "category": "Careers / Job Listings",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /career.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to return to the homepage"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section is displayed on the homepage"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "Open About section via navigation and read content",
+    "description": "Verifies a visitor can reach the About section and see biography and skills content displayed.",
+    "category": "About Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the about section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the about section summary of experience and skills is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Blog page shows a list of posts/excerpts",
+    "description": "Verifies the blog index page displays multiple post entries with preview information for browsing.",
+    "category": "Blog Browsing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /blog.html"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the page content to render"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of blog post entries with excerpt-style preview content is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Projects section remains usable on narrow mobile viewport",
+    "description": "Verifies that on a narrow viewport the Projects section renders without overlapping or off-screen content.",
+    "category": "Projects Showcase",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrow mobile width"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation control to open the mobile menu"
+      },
+      {
+        "type": "action",
+        "description": "Click the mobile menu link to jump to the projects section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify project cards are visible without horizontal overflow or overlapping content"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "Navigate from homepage to Careers and back",
+    "description": "Verifies a visitor can open the Careers page from the site navigation and return to the homepage successfully.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to open the careers page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to return to the homepage"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the homepage hero section is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC021",
+    "title": "Careers page shows job listings and role summaries",
+    "description": "Verifies the careers page displays available roles or listings with summary information for review.",
+    "category": "Careers / Job Listings",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /career.html"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the page content to render"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a list of job listings with role summary information is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Projects section reachable by scrolling",
+    "description": "Verifies that a visitor can discover the Projects section by normal scrolling and it remains usable.",
+    "category": "Projects Showcase",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down until the projects section is in view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the projects section is displayed and contains multiple project cards"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "Section reveal animations trigger during scrolling",
+    "description": "Verifies that scrolling down the homepage triggers reveal animations and content becomes visible as sections enter the viewport.",
+    "category": "Visual Effects and Animations",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down to the next major section below the hero"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down through additional sections to trigger multiple reveals"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple sections that start hidden become visible as the user scrolls"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Return from blog to homepage and reach Projects section via navigation",
+    "description": "Verifies a visitor can navigate from the blog back to the homepage and then jump to the projects section using site navigation.",
+    "category": "Blog Browsing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /blog.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to return to the homepage"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the projects section is displayed on the homepage"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Project cards remain readable while pointer moves across them",
+    "description": "Verifies that moving the pointer over project cards does not obscure content or break usability of the cards.",
+    "category": "Projects Showcase",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer across the surface of a project card"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer off the project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the project card content remains readable and the layout remains stable"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Close mobile navigation after selecting a section",
+    "description": "Verifies that after a mobile visitor selects a section link, the menu does not continue to obscure the page content.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrow mobile width"
+      },
+      {
+        "type": "action",
+        "description": "Click the mobile navigation toggle to open the menu"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact section is displayed without being covered by an open navigation menu"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Projects section navigation link works after scrolling deep in page",
+    "description": "Verifies that the Projects navigation link still jumps to the correct section after the user has scrolled far down the homepage.",
+    "category": "Projects Showcase",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down near the bottom of the page"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the projects section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the projects section is in view"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC028",
+    "title": "Mobile navigation supports keyboard-only open, move focus, and close",
+    "description": "Verifies keyboard-only users can open the collapsed navigation, move through items, and close it on mobile viewport.",
+    "category": "Responsive Layout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a narrow mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Press Tab until the mobile navigation control is focused"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter to open the mobile navigation menu"
+      },
+      {
+        "type": "action",
+        "description": "Press Tab to move focus into the opened navigation"
+      },
+      {
+        "type": "action",
+        "description": "Press Escape to close the mobile navigation menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is closed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a visible focus indicator is present on the currently focused element"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC029",
+    "title": "Scroll to About section manually",
+    "description": "Verifies a visitor can scroll normally to reach the About section and the content remains readable.",
+    "category": "About Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down until the about section is in view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the about section is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC030",
+    "title": "Orientation change preserves navigation and content accessibility on mobile",
+    "description": "Verifies that switching between portrait and landscape on a mobile-sized viewport preserves navigation access and keeps content usable.",
+    "category": "Responsive Layout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a narrow mobile portrait size"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a narrow mobile landscape size"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the page from top to bottom"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation remains accessible in landscape"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify content remains readable and not clipped after the viewport change"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC031",
+    "title": "Contact form rejects whitespace-only required input",
+    "description": "Verifies that required contact form fields do not accept whitespace-only values and show validation feedback.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with spaces only"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with test.visitor@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with spaces only"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an inline validation error is visible for invalid required input"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC032",
+    "title": "Interactive effects remain stable during rapid scroll",
+    "description": "Verifies that rapid scrolling through the homepage does not prevent content from appearing or leave sections in a broken visual state.",
+    "category": "Visual Effects and Animations",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll rapidly down near the bottom of the page"
+      },
+      {
+        "type": "action",
+        "description": "Scroll rapidly back up toward the hero"
+      },
+      {
+        "type": "action",
+        "description": "Scroll back down to the projects area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify key sections remain visible and usable after rapid scrolling"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC033",
+    "title": "Homepage content remains readable at very small mobile viewport",
+    "description": "Verifies that at an extremely small viewport the homepage remains navigable and core content does not become unusable due to overflow or occlusion.",
+    "category": "Responsive Layout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a very small mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the page from top to bottom"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify core sections can still be found and read without content being cut off"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify horizontal scrolling is not required to read main content"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC034",
+    "title": "Newsletter form trims or rejects leading/trailing whitespace in email",
+    "description": "Verifies that the newsletter subscription flow handles a valid email with surrounding spaces without confusing errors.",
+    "category": "Newsletter Subscription",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Fill  valid.email@example.com  into the newsletter email field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the newsletter subscription"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify either a subscription confirmation is visible or an email validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC035",
+    "title": "Contact form supports long message input without breaking layout",
+    "description": "Verifies that entering a very long message into the contact form does not break the form layout and still allows submission.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link to jump to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Test Visitor"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with test.visitor@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the message field with a very long multi-sentence message (several paragraphs)"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC036",
+    "title": "Homepage layout remains stable at large desktop viewport",
+    "description": "Verifies that on a very large desktop viewport the homepage uses available space without breaking alignment or spacing of key sections.",
+    "category": "Responsive Layout",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /index.html"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a very large desktop size"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the page from top to bottom"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify key sections remain properly laid out and visually separated"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify primary navigation remains accessible and does not overlap content"
+      }
+    ],
+    "priority": "Low"
+  }
+]
