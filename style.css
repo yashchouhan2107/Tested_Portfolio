@@ -423,8 +423,10 @@ section {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid var(--glass-border);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
+    background-color: #000;
     transition: all 0.5s ease;
 }
 
