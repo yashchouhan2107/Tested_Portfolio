@@ -190,7 +190,7 @@ export default function LuxuryExperience() {
                     <h2 style="font-size:2rem; margin-bottom:10px;">Let's Talk</h2>
                     <p style="font-size:0.95rem;">Fill out the details below and I'll get back to you shortly.</p>
                 </div>
-                <form id="contact-form" action="https://formsubmit.co/yashchouhan2107@gmail.com" method="POST" class="career-form">
+                <form id="contact-form" action="https://formsubmit.co/yashchauhan2107@gmail.com" method="POST" class="career-form">
                     <input type="hidden" name="_subject" value="New Contact Message">
                     <input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
