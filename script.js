@@ -1,35 +1,9 @@
-// Supabase Initialization
-const SUPABASE_URL = 'https://kxhqcieygyszmkcznjcb.supabase.co';
-const SUPABASE_KEY = 'sb_publishable__zSxjXVSVvoFVZazIhMEcQ_BPKWfAkh';
-let supabaseClient = null;
 
-// Vanta.js 3D Background Initialization
+
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.VANTA && document.querySelector("#vanta-bg")) {
-        VANTA.WAVES({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x050505, // Dark base
-            shininess: 30.00,
-            waveHeight: 15.00,
-            waveSpeed: 0.50,
-            zoom: 0.85
-        });
-    }
+    // Background Animation
+    initBackgroundAnimation();
 
-    // Vanilla Tilt 3D Effects
-    VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2,
-    });
 
     // Navbar Scroll Effect
     const navbar = document.querySelector(".navbar");
@@ -40,6 +14,32 @@ document.addEventListener("DOMContentLoaded", () => {
             navbar.classList.remove("scrolled");
         }
     });
+
+    // ScrollSpy Logic
+    const sections = document.querySelectorAll("section[id]");
+    const navLinksList = document.querySelectorAll(".nav-links a[href^='#']:not(.btn-primary-sm)");
+
+    const scrollSpy = () => {
+        let current = "hero"; // Default to hero
+        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (scrollPosition >= sectionTop - 150) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinksList.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", scrollSpy);
+    scrollSpy(); // Initial call to set active state on load
 
     // Mobile Menu Toggle (Basic)
     const hamburger = document.querySelector(".hamburger");
@@ -184,21 +184,23 @@ export default function LuxuryExperience() {
     // Contact Modal Injection and Logic
     const contactModalHTML = `
         <div id="contact-modal" class="modal-overlay">
-            <div class="modal-content glass-card tilt-card">
+            <div class="modal-content glass-card">
                 <span id="close-modal" class="close-btn">&times;</span>
                 <div class="section-title" style="margin-bottom:20px; text-align:left;">
                     <h2 style="font-size:2rem; margin-bottom:10px;">Let's Talk</h2>
                     <p style="font-size:0.95rem;">Fill out the details below and I'll get back to you shortly.</p>
                 </div>
-                <form id="contact-form" class="career-form">
+                <form id="contact-form" action="https://formsubmit.co/yashchouhan2107@gmail.com" method="POST" class="career-form">
+                    <input type="hidden" name="_subject" value="New Contact Message">
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
                      </div>
                     <div class="form-group">
-                         <input type="email" placeholder="Email Address" required>
+                         <input type="email" name="email" placeholder="Email Address" required>
                     </div>
                     <div class="form-group">
-                         <textarea rows="4" placeholder="How can I help you?" required></textarea>
+                         <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
                      </div>
                     <button type="submit" class="btn-primary lg" style="width:100%;">Send Message</button>
                 </form>
@@ -213,18 +215,12 @@ export default function LuxuryExperience() {
     const closeModalBtn = document.getElementById("close-modal");
 
     openContactBtns.forEach(btn => {
-        if (btn.textContent.includes("Let's Talk") || btn.textContent.includes("Contact") || btn.textContent.includes("Ask a Question")) {
+        if (btn.textContent.includes("Let's Talk") || btn.textContent.includes("Contact") || btn.textContent.includes("Ask a Question") || btn.textContent.includes("Get in Touch")) {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
                 contactModal.classList.add("active");
-                if (window.VanillaTilt) {
-                    VanillaTilt.init(document.querySelectorAll("#contact-modal .tilt-card"), {
-                        max: 10,
-                        speed: 400,
-                        glare: true,
-                        "max-glare": 0.2
-                    });
-                }
+                document.body.style.overflow = "hidden";
+                // VanillaTilt removed as per request
             });
         }
     });
@@ -243,85 +239,7 @@ export default function LuxuryExperience() {
         });
     }
 
-    // Initialize Supabase Client if library is loaded
-    if (window.supabase) {
-        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    }
-    
-    // Form Handlers
-    const contactForm = document.getElementById("contact-form");
-    if (contactForm && supabaseClient) {
-        contactForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector("button[type='submit']");
-            const originalText = btn.textContent;
-            btn.textContent = "Sending...";
-            btn.disabled = true;
 
-            const inputs = contactForm.querySelectorAll("input, textarea");
-            const name = inputs[0].value;
-            const email = inputs[1].value;
-            const message = inputs[2].value;
-
-            const { data, error } = await supabaseClient
-                .from('contact_messages')
-                .insert([{ name, email, message }]);
-
-            if (error) {
-                console.error("Supabase Error:", error);
-                btn.textContent = "Failed to Send";
-                btn.style.background = "#ff5f56";
-            } else {
-                btn.textContent = "Message Sent!";
-                btn.style.background = "#27c93f";
-                contactForm.reset();
-            }
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = "";
-                btn.disabled = false;
-            }, 3000);
-        });
-    }
-
-    const careerForm = document.getElementById("career-form");
-    if (careerForm && supabaseClient) {
-        careerForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const btn = careerForm.querySelector("button[type='submit']");
-            const originalText = btn.textContent;
-            btn.textContent = "Submitting...";
-            btn.disabled = true;
-
-            const inputs = careerForm.querySelectorAll("input, textarea, select");
-            const name = inputs[0].value;
-            const email = inputs[1].value;
-            const position = inputs[2].value;
-            const portfolio_url = inputs[3].value;
-            const about = inputs[4].value;
-
-            const { data, error } = await supabaseClient
-                .from('job_applications')
-                .insert([{ name, email, position, portfolio_url, about }]);
-
-            if (error) {
-                console.error("Supabase Error:", error);
-                btn.textContent = "Application Failed";
-                btn.style.background = "#ff5f56";
-            } else {
-                btn.textContent = "Application Submitted!";
-                btn.style.background = "#27c93f";
-                careerForm.reset();
-            }
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = "";
-                btn.disabled = false;
-            }, 4000);
-        });
-    }
 
     // Preloader Logic
     window.addEventListener('load', () => {
@@ -365,3 +283,164 @@ export default function LuxuryExperience() {
         });
     });
 });
+
+function initBackgroundAnimation() {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
+
+    // Three.js Setup
+    const scene = new THREE.Scene();
+    // Add fog to blend the horizon into the dark background
+    scene.fog = new THREE.FogExp2(0x050505, 0.012);
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    // Position camera higher up, looking slightly down at the terrain
+    camera.position.set(0, 15, 60);
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: false // Disabled antialiasing for raw performance
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(1); // Force pixel ratio to 1 to drastically reduce GPU load
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    // Create a high-definition plane for the flowing terrain
+    // Size: 250x250, Segments: 40x40. Segment size = 250/40 = 6.25
+    const segmentSize = 250 / 40;
+    const geometry = new THREE.PlaneGeometry(250, 250, 40, 40);
+    geometry.rotateX(-Math.PI / 2); // Lay it flat
+
+    // Wireframe material for the high-tech structural look
+    const wireMaterial = new THREE.MeshBasicMaterial({
+        color: 0xff416c,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.2
+    });
+
+    // Solid dark material behind the wireframe to give depth and obscure back-lines
+    // Setting transparent to false drastically improves rendering performance
+    const solidMaterial = new THREE.MeshBasicMaterial({
+        color: 0x050505,
+        transparent: false
+    });
+
+    const meshSolid = new THREE.Mesh(geometry, solidMaterial);
+    const meshWire = new THREE.Mesh(geometry, wireMaterial);
+    
+    // Slightly offset the solid mesh to prevent z-fighting
+    meshSolid.position.y = -0.1;
+    
+    group.add(meshSolid);
+    group.add(meshWire);
+
+    // Track original Y positions to animate them
+    const pos = geometry.attributes.position;
+    const originalY = new Float32Array(pos.count);
+    const randomOffsets = new Float32Array(pos.count);
+    for (let i = 0; i < pos.count; i++) {
+        originalY[i] = pos.getY(i);
+        randomOffsets[i] = Math.random() * Math.PI * 2;
+    }
+
+    // Add floating ambient particles (Cyber-dust)
+    const particlesGeo = new THREE.BufferGeometry();
+    const particleCount = 400;
+    const particlePos = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+        particlePos[i * 3] = (Math.random() - 0.5) * 200; // x
+        particlePos[i * 3 + 1] = Math.random() * 40;      // y (height)
+        particlePos[i * 3 + 2] = (Math.random() - 0.5) * 200; // z
+    }
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+    const particlesMat = new THREE.PointsMaterial({
+        color: 0xff416c,
+        size: 0.5,
+        transparent: true,
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
+    });
+    const particles = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particles);
+
+    // Mouse Interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    document.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX - windowHalfX) * 0.05;
+        mouseY = (event.clientY - windowHalfY) * 0.05;
+    });
+
+    // Scroll Interaction
+    let scrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+    });
+
+    // Animation Loop
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const elapsedTime = clock.getElapsedTime();
+
+        // Animate the terrain vertices using overlapping sine waves
+        // The waves will travel along the Z-axis to simulate perfectly smooth forward motion
+        const forwardSpeed = 6; 
+
+        for (let i = 0; i < pos.count; i++) {
+            const x = pos.getX(i);
+            const z = pos.getZ(i);
+            
+            // Shift the Z coordinate based on time to make the waves roll forward continuously
+            const flowZ = z - elapsedTime * forwardSpeed;
+
+            // Multi-layered waves for organic fluid look
+            const wave1 = Math.sin(x * 0.05 + elapsedTime * 0.8) * 2;
+            const wave2 = Math.cos(flowZ * 0.05) * 2; // Forward rolling wave
+            const wave3 = Math.sin((x + flowZ) * 0.03) * 2.5; // Diagonal rolling wave
+            
+            // Micro-ripples
+            const noise = Math.sin(randomOffsets[i] + elapsedTime * 2) * 0.3;
+
+            pos.setY(i, originalY[i] + wave1 + wave2 + wave3 + noise);
+        }
+        pos.needsUpdate = true;
+        
+        // Gentle rotation of the whole horizon
+        group.rotation.y = Math.sin(elapsedTime * 0.1) * 0.1;
+
+        // Ambient particles drifting
+        particles.position.y = Math.sin(elapsedTime * 0.2) * 2;
+        particles.rotation.y = elapsedTime * 0.02;
+
+        // Camera parallax based on mouse and scroll
+        const targetCamX = mouseX;
+        // As you scroll down, the camera dips closer to the fluid terrain
+        const targetCamY = 15 - mouseY - scrollY * 0.015; 
+
+        camera.position.x += (targetCamX - camera.position.x) * 0.02;
+        camera.position.y += (targetCamY - camera.position.y) * 0.05;
+        camera.lookAt(0, 5, 0);
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Resize handling
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+}

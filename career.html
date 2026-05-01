@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career | InnovateSolutions</title>
+    <title>Career | AVENOR</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
@@ -14,10 +14,13 @@
 </head>
 
 <body>
+    <!-- Background Animation -->
+    <canvas id="bg-canvas"></canvas>
+
     <!-- Page Loader -->
     <div id="page-loader">
         <div class="loader-circle"></div>
-        <div class="loader-text">Innovate<span>.</span></div>
+        <div class="loader-text">AVENOR<span>.</span></div>
     </div>
 
     <!-- 3D Background Container -->
@@ -25,7 +28,7 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">Innovate<span>.</span></div>
+        <div class="logo">AVENOR<span>.</span></div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About</a></li>
@@ -91,15 +94,17 @@
                         <h2>Ready to Apply?</h2>
                         <p>Fill out the form below to join our elite team.</p>
                     </div>
-                    <form id="career-form" class="career-form">
+                    <form id="career-form" action="https://formsubmit.co/yashchouhan2107@gmail.com" method="POST" class="career-form">
+                        <input type="hidden" name="_subject" value="New Job Application">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
+                            <input type="text" name="name" placeholder="Full Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <select required>
+                            <select name="position" required>
                                 <option value="" disabled selected>Select Position</option>
                                 <option value="frontend">Creative Frontend Developer</option>
                                 <option value="designer">UI/UX Brand Designer</option>
@@ -108,14 +113,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="url" placeholder="Portfolio / LinkedIn / GitHub URL" required>
+                            <input type="url" name="portfolio_url" placeholder="Portfolio / LinkedIn / GitHub URL" required>
                         </div>
                         <div class="form-group">
-                            <textarea rows="4" placeholder="Tell us about yourself and your proudest work..."
-                                required></textarea>
+                            <textarea name="about" rows="4" placeholder="Tell us about yourself and your proudest work..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary lg" style="width:100%; text-align:center;">Submit
-                            Application</button>
+                        <button type="submit" class="btn-primary lg" style="width:100%; text-align:center;">Submit Application</button>
                     </form>
                 </div>
 
@@ -135,7 +138,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand" style="max-width: 320px;">
-                <h2>InnovateSolutions<span>.</span></h2>
+                <h2>AVENOR<span>.</span></h2>
                 <p style="color: #a0a0a0; margin-bottom: 20px;">We craft exceptional digital experiences that captivate
                     audiences and drive measurable results for forward-thinking brands.</p>
                 <div class="contact-info">
@@ -144,7 +147,7 @@
                         Drive, TX 78701</p>
                     <p><i class="fas fa-envelope"
                             style="color: var(--accent-color); margin-right: 15px; width: 15px;"></i>
-                        hello@innovatesolutions.com</p>
+                        hello@avenor.com</p>
                     <p><i class="fas fa-phone-alt"
                             style="color: var(--accent-color); margin-right: 15px; width: 15px;"></i> +1 (555) 123-4567
                     </p>
@@ -176,8 +179,10 @@
                 <h3>Subscribe</h3>
                 <p style="color: #a0a0a0; margin-bottom: 15px;">Stay updated with our latest digital strategies and
                     design trends.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Email address" required>
+                <form class="newsletter-form" action="https://formsubmit.co/yashchouhan2107@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Newsletter Subscription">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="email" name="email" placeholder="Email address" required>
                     <button type="submit" class="btn-primary-sm">Subscribe</button>
                 </form>
                 <div class="footer-social">
@@ -189,7 +194,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 InnovateSolutions. All rights reserved.</p>
+            <p>&copy; 2026 AVENOR. All rights reserved.</p>
         </div>
     </footer>
 
@@ -199,7 +204,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="script.js"></script>
 </body>
 

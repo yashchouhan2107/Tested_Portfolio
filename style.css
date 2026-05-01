@@ -12,7 +12,8 @@
     --accent-secondary: #ff4b2b;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.05);
-    --font-main: 'Outfit', sans-serif;
+    --font-main: 'Inter', sans-serif;
+    --font-secondary: 'Lexend Giga', sans-serif;
 }
 
 body {
@@ -21,6 +22,18 @@ body {
     color: var(--text-color);
     overflow-x: hidden;
     line-height: 1.6;
+    position: relative;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 1;
 }
 
 /* Typography */
@@ -29,6 +42,7 @@ h2,
 h3,
 h4,
 h5 {
+    font-family: var(--font-secondary);
     font-weight: 600;
     line-height: 1.2;
 }
@@ -54,15 +68,7 @@ p {
 }
 
 /* 3D Background */
-#vanta-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-}
+
 
 /* Layout Classes */
 .container {
@@ -102,6 +108,7 @@ section {
 }
 
 .logo {
+    font-family: var(--font-secondary);
     font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: -0.05em;
@@ -154,6 +161,7 @@ section {
 .btn-primary,
 .btn-secondary,
 .btn-primary-sm {
+    font-family: var(--font-secondary);
     display: inline-block;
     padding: 12px 32px;
     border-radius: 30px;
@@ -201,29 +209,89 @@ section {
     font-size: 1.1rem;
 }
 
-/* Hero Section */
-.hero {
+/* Hero Section: Premium Centered */
+.hero.premium-centered {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 120px;
-    gap: 50px;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 5% 60px;
+    background: transparent;
+    /* No solid background */
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 600px;
+    max-width: 1200px;
+    /* Wide layout */
+    z-index: 10;
 }
 
-.hero-sub {
-    margin: 20px 0 40px;
-    font-size: 1.2rem;
+.hero-tag {
+    font-family: var(--font-secondary);
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: #fff;
+    letter-spacing: -0.04em;
+}
+
+.italic-thin {
+    font-family: var(--font-secondary);
+    font-style: italic;
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 800px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+    font-weight: 300;
 }
 
 .hero-cta {
     display: flex;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .hero-cta a {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* 3D Glass Card */
@@ -274,11 +342,15 @@ section {
 /* Trusted By / Logos */
 .trusted-by {
     text-align: center;
-    padding: 50px 0;
+    padding: 60px 0;
     overflow: hidden;
     border-top: 1px solid var(--glass-border);
     border-bottom: 1px solid var(--glass-border);
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    max-width: none;
+    width: 100%;
+    margin: 40px 0;
+    backdrop-filter: blur(10px);
 }
 
 .trusted-by p {
@@ -414,6 +486,13 @@ section {
     cursor: pointer;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+    transform: scale(1.03);
+    border-color: rgba(255, 65, 108, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .project-image {
@@ -460,6 +539,14 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px;
+}
+
+.testimonial-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.testimonial-card:hover {
+    transform: scale(1.03);
 }
 
 .testimonial-card i {
@@ -544,7 +631,7 @@ section {
 }
 
 .tech-feature-card:hover {
-    transform: translateX(10px);
+    transform: scale(1.03) translateX(10px);
     background: rgba(35, 35, 45, 0.8);
     border-color: rgba(255, 65, 108, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -597,6 +684,12 @@ section {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.terminal-window:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 65, 108, 0.3);
 }
 
 .terminal-header {
@@ -762,7 +855,8 @@ footer {
     border-top: 1px solid var(--glass-border);
     position: relative;
     z-index: 10;
-    background: #000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 .footer-content {
@@ -1164,12 +1258,14 @@ footer {
 }
 
 .section-tag {
-    color: var(--primary-color, #ffff);
+    font-family: var(--font-secondary);
+    color: var(--primary-color, #fff);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 2.0rem;
+    font-size: 0.9rem;
     font-weight: 700;
     margin-bottom: 15px;
+    opacity: 0.8;
 }
 
 .about-text h2 {
@@ -1196,6 +1292,7 @@ footer {
 }
 
 .skill-tag {
+    font-family: var(--font-secondary);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 8px 16px;
@@ -1210,18 +1307,20 @@ footer {
     transform: translateY(-2px);
 }
 
-/* About Section Image Styling */
-.about-img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: block;
+.about-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.about-img:hover {
-    transform: scale(1.03) translateY(-5px);
+.about-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: block;
 }
 
 /* Terminal Window Implementation */
